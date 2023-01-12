@@ -1,0 +1,23 @@
+colcon build --symlink-install
+source install/setup.bash
+ros2 msg list
+ros2 msg list | grep MyMsg
+
+ros2 interface list
+ros2 interface show ros2_msg/msg/MyMsg
+ros2 topic pub /test_topic ros2_msg/msg/MyMsg "{day: '21', month: 'August', year: '2023'}" -1
+ros2 topic pub /topic msg/MyMsg "{day: '21', month: 'August', year: '2023'}" -1
+ros2 topic pub /topic std_msgs/String 'data: Hello World' -1
+ros2 topic pub /text_topic std_msgs/String 'data: Hello World' -1
+
+
+
+//ros2 topic pub /test_topic ros2_msg/MyMsg "{day: '21', month: 'August', year: '2023'}"
+
+
+in normal terminal
+---->
+source /opt/ros/crystal/setup.bash
+ros2 topic echo /test_topic
+source ros2_ws3/install/setup.bash
+ros2 topic echo /test_topic
